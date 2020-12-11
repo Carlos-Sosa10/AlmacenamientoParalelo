@@ -1,16 +1,18 @@
-from pyspark import SparkContext,SparkConf
+from pyspark import SparkContext
+from pyspark import SparkConf
 from pyspark.sql import SparkSession
-import urllib2
+
+import urllib3
 import urllib
 import json
 
 conf = SparkConf().setAppName("api_temperatura").setMaster("local")
 sc = SparkContext(conf=conf)
-url = "http://localhost:9091/obtenerTemperatura"
+url = "http://144.202.34.148:3018/Minip/api"
 args = {"Tipo":"Completa","NoCo":"05590693"}
 post_params = {"Tipo":"Completa","NoCo":"05590693"}
 params = urllib.urlencode(post_params)
-response = urllib2.urlopen(url, params)
+response = urllib3.urlopen(url, params)
 json_response = json.loads(response.read())
 datos = json_response
 
