@@ -7,7 +7,8 @@ const botonesSchema = Schema({
     //name: String,
     //btnId: String,
     btn: String,
-    pos: String
+    pos: String,
+    tem: String
 })
 
 module.exports = mongoose.model('botones', botonesSchema)

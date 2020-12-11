@@ -42,7 +42,8 @@ app.post('/Minip/api',(req, res) =>{
  
     Minip.btn = req.body.btn
     Minip.pos = req.body.pos
-
+    Minip.temp =req.body.temp
+    
     Minip.save((err, MinipStored) =>{
       if (err) res.status(500).send({message: `Request Error BD:${err}` })
     
