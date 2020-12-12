@@ -4,8 +4,8 @@ import datetime
 
 app = Flask(__name__)
 
-app.config['MONGO_DBNAME'] = 'datosard'
-app.config['MONGO_URI'] = 'mongodb:127.0.0.1:27017/datosard'
+app.config['MONGO_DBNAME'] = 'minip'
+app.config['MONGO_URI'] = 'mongodb://localhost:27017/minip''
 
 mongo = PyMongo(app)
 #Leer los datos de la bd
