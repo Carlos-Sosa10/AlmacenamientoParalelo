@@ -5,23 +5,23 @@ from pyspark.sql import functions as F
 
 if __name__ == "__main__":
     """
-        Usage: ejerciciospark2
+        Usage: ejercicio2
     """
 
     spark = SparkSession \
         .builder \
-        .appName("PySparkEjemplo2") \
+        .appName("PySparkejercisio2") \
         .getOrCreate()
 
     def getDataFromApi():
-        url = "http://144.202.34.148:3333/obtenerData"
+        url = http://144.202.34.148:3018/Minip/api/
         response = requests.get(url)
         return response
 
     data = getDataFromApi()
     json_rdd = spark.sparkContext.parallelize([data.text])
     df = spark.read.json(json_rdd)
-    result = df.select("luz").agg(F.min(df["luz"]), F.max(df["luz"]), F.avg(df["luz"]))
+    result = df.select("temp").agg(F.min(df["temp"]), F.max(df["temp"]), F.avg(df["temp"]))
     print(result.show(truncate=False))
 
     spark.stop()
