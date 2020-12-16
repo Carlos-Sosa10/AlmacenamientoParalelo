@@ -15,7 +15,7 @@ if __name__ == "__main__":
 
 
     def getDataFromApi():
-        url = "http://144.202.34.148:3010/api/product"
+        url = "http://144.202.34.148:3018/Minip/api/"
         response = requests.get(url)
         return response.text
 
