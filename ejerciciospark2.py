@@ -9,7 +9,7 @@ if __name__ == "__main__":
 
     spark = SparkSession \
         .builder \
-        .appName("Python Spark SQL basic example") \
+        .appName("Python Spark") \
         .config("spark.some.config.option", "some-value") \
         .getOrCreate()
 
@@ -26,6 +26,6 @@ if __name__ == "__main__":
     json_rdd = spark.sparkContext.parallelize([data])
     df = spark.read.json(json_rdd)
     df.printSchema()
-    result = df.where((df.fecha <= "2020-12-12") & (df.fecha >= "2020-12-10")).agg(F.avg('tempe'),F.min('temp'),F.max('temp'))
+    result = df.where((df.fecha <= "2020-12-12") & (df.fecha >= "2020-12-10")).agg(F.avg('temp'),F.min('temp'),F.max('temp'))
     result.show(100)
     spark.stop()
