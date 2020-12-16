@@ -8,7 +8,8 @@ const botonesSchema = Schema({
     //btnId: String,
     btn: String,
     pos: String,
-    temp: String
+    date:Date,
+    temp:Number
 })
 
 module.exports = mongoose.model('botones', botonesSchema)
