@@ -11,12 +11,12 @@ fecha2 = ''
 
 if __name__ == "__main__":
     """
-        Usage: ejerciciospark1 [fecha1][fecha2]
+        Usage: ejercicio1 [fecha1][fecha2]
     """
 
     spark = SparkSession \
         .builder \
-        .appName("PySparkEjemplo1") \
+        .appName("PySparkejercisio1") \
         .getOrCreate()
 
     if len(sys.argv) > 2:
@@ -27,7 +27,7 @@ if __name__ == "__main__":
 
 
     def getDataFromApi():
-        url = "http://144.202.34.148:3333/obtenerData"
+        url = "http://144.202.34.148:3018/Minip/api/"
         response = requests.get(url)
         return response
 
@@ -41,8 +41,8 @@ if __name__ == "__main__":
     data = getDataFromApi()
     json_rdd = spark.sparkContext.parallelize([data.text])
     df = spark.read.json(json_rdd)
-    filtro = df.select("distancia").filter(my_fil(df["ult_act"]))
-    result = filtro.agg(F.min(df["distancia"]), F.max(df["distancia"]), F.avg(df["distancia"]))
+    filtro = df.select("temp").filter(my_fil(df["temp"]))
+    result = filtro.agg(F.min(df["temp"]), F.max(df["temp"]), F.avg(df["temp"]))
     print(filtro.show(truncate=False))
     print(result.show(truncate=False))
     print("Fin de del Proceso")
