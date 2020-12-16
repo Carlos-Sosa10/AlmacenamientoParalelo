@@ -42,6 +42,7 @@ app.post('/Minip/api',(req, res) =>{
  
     Minip.btn = req.body.btn
     Minip.pos = req.body.pos
+    Minip.date =req.body.date
     Minip.temp =req.body.temp
     
     Minip.save((err, MinipStored) =>{
